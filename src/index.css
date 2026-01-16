@@ -2,30 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Kitty Galore Theme Styles */
+/* APEX Game Credits Theme Styles - Dark Theme with Pink Accents */
 /* Glassmorphism utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(26, 26, 26, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(231, 70, 148, 0.2);
-}
-
-.glass-strong {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(231, 70, 148, 0.3);
 }
 
+.glass-strong {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(231, 70, 148, 0.4);
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(26, 26, 26, 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(231, 70, 148, 0.35);
-  box-shadow: 0 8px 32px 0 rgba(231, 70, 148, 0.25), 
-              0 2px 8px 0 rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(231, 70, 148, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(231, 70, 148, 0.2), 
+              0 2px 8px 0 rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 0 rgba(231, 70, 148, 0.1);
 }
 
 .glass-hover {
@@ -33,11 +33,11 @@
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.65);
-  border-color: rgba(231, 70, 148, 0.5);
-  box-shadow: 0 12px 40px 0 rgba(231, 70, 148, 0.35), 
-              0 4px 12px 0 rgba(0, 0, 0, 0.15),
-              inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  background: rgba(26, 26, 26, 0.85);
+  border-color: rgba(231, 70, 148, 0.6);
+  box-shadow: 0 12px 40px 0 rgba(231, 70, 148, 0.3), 
+              0 4px 12px 0 rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 0 rgba(231, 70, 148, 0.2);
   transform: translateY(-2px);
 }
 
@@ -73,12 +73,12 @@
   text-shadow: 0 0 10px rgba(231, 70, 148, 0.8);
 }
 
-/* Legacy cafe color helpers (for compatibility) */
-.bg-cafe-cream { background-color: #F5F5F5; }
-.bg-cafe-beige { background-color: #E5E5E5; }
-.bg-cafe-light { background-color: rgba(255, 255, 255, 0.6); }
+/* Legacy cafe color helpers (for compatibility) - Updated for dark theme */
+.bg-cafe-cream { background-color: #1A1A1A; }
+.bg-cafe-beige { background-color: #262626; }
+.bg-cafe-light { background-color: rgba(26, 26, 26, 0.6); }
 .text-cafe-accent { color: #E74694; }
-.text-cafe-dark { color: #2D1B2E; }
+.text-cafe-dark { color: #FFFFFF; }
 .border-cafe-accent { border-color: #E74694; }
 .border-cafe-latte { border-color: rgba(231, 70, 148, 0.3); }
 .ring-cafe-accent { --tw-ring-color: #E74694; }
@@ -165,5 +165,44 @@ img {
 /* Search input placeholder color */
 input[type="text"]::placeholder {
   color: #E74694;
-  opacity: 0.7;
+  opacity: 0.6;
+}
+
+/* Dark theme base text colors */
+body {
+  color: #FFFFFF;
+  background-color: #0A0A0A;
+}
+
+.text-cafe-text {
+  color: #FFFFFF;
+}
+
+.text-cafe-textMuted {
+  color: #A0A0A0;
+}
+
+/* Admin input fields - ensure black text (inputs not using glass styling) */
+input[type="text"]:not(.glass),
+input[type="number"]:not(.glass),
+input[type="password"]:not(.glass),
+input[type="email"]:not(.glass),
+textarea:not(.glass),
+select:not(.glass) {
+  color: #000000 !important;
+}
+
+/* Ensure option elements in select are black */
+select option {
+  color: #000000;
+}
+
+/* Admin sections - ensure inputs have black text */
+.bg-white input,
+.bg-white textarea,
+.bg-white select,
+.bg-gray-50 input,
+.bg-gray-50 textarea,
+.bg-gray-50 select {
+  color: #000000 !important;
 }

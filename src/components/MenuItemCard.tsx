@@ -74,8 +74,42 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
       {/* Uniform vertical layout for all items: image on top, title, subtitle */}
       <div 
         onClick={handleCardClick}
-        className={`flex flex-col items-center transition-all duration-300 group rounded-xl overflow-hidden ${!item.available ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'} glass-card hover:glass-hover`}
+        className={`relative flex flex-col items-center transition-all duration-300 group rounded-xl overflow-hidden ${!item.available ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'} glass-card hover:glass-hover`}
       >
+        {/* Top Left Corner Decoration */}
+        <div className="absolute top-0 left-0 z-10 w-6 h-6 sm:w-8 sm:h-8">
+          <svg className="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M0 0 L32 0 L32 8 L8 8 L8 32 L0 32 Z" 
+              fill="rgba(231, 70, 148, 0.6)" 
+              stroke="rgba(231, 70, 148, 0.8)" 
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path 
+              d="M0 0 L8 0 L8 8 L0 8 Z" 
+              fill="rgba(231, 70, 148, 0.4)"
+            />
+          </svg>
+        </div>
+
+        {/* Bottom Right Corner Decoration */}
+        <div className="absolute bottom-0 right-0 z-10 w-6 h-6 sm:w-8 sm:h-8 rotate-180">
+          <svg className="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M0 0 L32 0 L32 8 L8 8 L8 32 L0 32 Z" 
+              fill="rgba(231, 70, 148, 0.6)" 
+              stroke="rgba(231, 70, 148, 0.8)" 
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path 
+              d="M0 0 L8 0 L8 8 L0 8 Z" 
+              fill="rgba(231, 70, 148, 0.4)"
+            />
+          </svg>
+        </div>
+
         {/* Game Image Icon on Top - corner to corner */}
         <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-cafe-darkCard to-cafe-darkBg transition-transform duration-300 group-hover:scale-105">
           {item.image ? (
@@ -137,23 +171,23 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           <div 
             className="flex flex-col rounded-2xl max-w-2xl w-full max-h-[90vh] shadow-2xl overflow-hidden" 
             style={{
-              background: 'rgba(255, 200, 220, 0.4)',
+              background: 'rgba(26, 26, 26, 0.95)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
-              border: '1.5px solid rgba(255, 182, 193, 0.5)',
-              boxShadow: '0 8px 32px 0 rgba(255, 182, 193, 0.3), 0 2px 8px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.4)'
+              border: '1.5px solid rgba(231, 70, 148, 0.4)',
+              boxShadow: '0 8px 32px 0 rgba(231, 70, 148, 0.3), 0 2px 8px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(231, 70, 148, 0.1)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
             <div 
               className="flex-shrink-0 p-6 flex items-center justify-between rounded-t-2xl" 
               style={{ 
-                background: 'rgba(255, 200, 220, 0.5)',
+                background: 'rgba(26, 26, 26, 0.9)',
                 backdropFilter: 'blur(24px)',
                 WebkitBackdropFilter: 'blur(24px)',
                 zIndex: 20,
-                borderBottom: '1.5px solid rgba(255, 182, 193, 0.6)',
-                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.1)'
+                borderBottom: '1.5px solid rgba(231, 70, 148, 0.3)',
+                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.3)'
               }}
             >
               <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -188,7 +222,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             <div 
               className="flex-1 overflow-y-auto min-h-0 relative" 
               style={{ 
-                background: 'rgba(255, 200, 220, 0.35)',
+                background: 'rgba(26, 26, 26, 0.8)',
                 backdropFilter: 'blur(24px)',
                 WebkitBackdropFilter: 'blur(24px)',
                 WebkitOverflowScrolling: 'touch',
@@ -200,7 +234,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 className="sticky top-0 left-0 right-0 z-10 pointer-events-none"
                 style={{
                   height: '32px',
-                  background: 'linear-gradient(to bottom, rgba(255, 200, 220, 0.5) 0%, rgba(255, 200, 220, 0.35) 20%, rgba(255, 200, 220, 0.2) 50%, transparent 100%)',
+                  background: 'linear-gradient(to bottom, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.8) 20%, rgba(26, 26, 26, 0.6) 50%, transparent 100%)',
                   marginBottom: '-32px'
                 }}
               />
@@ -252,7 +286,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                         {sortedCategories.map((category, categoryIndex) => (
                           <div key={category}>
                             {/* Category Header */}
-                            <h4 className="text-lg font-bold text-cafe-text mb-3">{category}</h4>
+                            <h4 className="text-lg font-bold text-white uppercase mb-3" style={{ 
+                              fontFamily: "'Orbitron', sans-serif",
+                              letterSpacing: '0.05em',
+                              textShadow: '0 0 10px rgba(231, 70, 148, 0.5), 0 0 20px rgba(231, 70, 148, 0.3)'
+                            }}>{category}</h4>
                             
                             {/* Packages Grid */}
                             <div className="grid grid-cols-2 gap-3">
@@ -265,30 +303,30 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                                   <button
                                     key={variation.id}
                                     onClick={() => handleItemSelect(variation)}
-                                    className="bg-white rounded-lg p-3 text-left group shadow-md relative overflow-hidden package-card-hover"
+                                    className="glass-card rounded-lg p-3 text-left group shadow-md relative overflow-hidden hover:glass-hover border border-cafe-primary/30"
                                     style={{
-                                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                                      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 0 10px rgba(231, 70, 148, 0.1)'
                                     }}
                                   >
                                     <div className="flex flex-col">
-                                      <div className="font-semibold text-gray-900 text-sm mb-1">
+                                      <div className="font-semibold text-white text-sm mb-1">
                                         {variation.name}
                                       </div>
                                       {variation.description && (
-                                        <div className="text-xs text-gray-600 mb-2 line-clamp-2">
+                                        <div className="text-xs text-cafe-textMuted mb-2 line-clamp-2">
                                           {variation.description}
                                         </div>
                                       )}
                                       <div className="mt-auto">
-                                        <div className="text-base font-bold text-gray-900">
+                                        <div className="text-base font-bold text-cafe-primary">
                                           ₱{discountedPrice.toFixed(2)}
                                         </div>
                                         {isDiscounted && (
                                           <div className="flex items-center gap-2 mt-1">
-                                            <div className="text-xs text-gray-500 line-through">
+                                            <div className="text-xs text-cafe-textMuted line-through">
                                               ₱{originalPrice.toFixed(2)}
                                             </div>
-                                            <div className="text-xs text-gray-900 font-semibold">
+                                            <div className="text-xs text-cafe-primary font-semibold">
                                               -{item.discountPercentage}%
                                             </div>
                                           </div>
@@ -310,7 +348,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                     );
                   })()
                 ) : (
-                  <div className="text-center py-8 text-cafe-textMuted">
+                  <div className="text-center py-8 text-cafe-textMuted text-white">
                     No currency packages available
                   </div>
                 )}

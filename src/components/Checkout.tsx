@@ -299,7 +299,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack, onNa
     }
 
     const orderDetails = `
-🛒 Kitty Galore Game Credits ORDER
+🛒 APEX Game Credits ORDER
 
 ${customFieldsSection}
 
@@ -319,7 +319,7 @@ ${cartItems.map(item => {
 
 📸 Payment Receipt: ${receiptImageUrl || ''}
 
-Please confirm this order to proceed. Thank you for choosing Kitty Galore Game Credits! 🎮
+Please confirm this order to proceed. Thank you for choosing APEX Game Credits! 🎮
     `.trim();
 
     return orderDetails;
@@ -461,7 +461,7 @@ Please confirm this order to proceed. Thank you for choosing Kitty Galore Game C
 
     const orderDetails = generateOrderMessage();
     const encodedMessage = encodeURIComponent(orderDetails);
-    const messengerUrl = `https://m.me/KGGameCredits?text=${encodedMessage}`;
+    const messengerUrl = `https://m.me/eyyyyynaa?text=${encodedMessage}`;
     
     window.open(messengerUrl, '_blank');
   };

@@ -28,7 +28,7 @@ const Cart: React.FC<CartProps> = ({
           <div className="mb-4 flex justify-center">
             <img 
               src="/logo.png" 
-              alt="Kitty Galore Logo"
+              alt="APEX Game Credits Logo"
               className="h-24 sm:h-32 md:h-40 w-auto object-contain"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
