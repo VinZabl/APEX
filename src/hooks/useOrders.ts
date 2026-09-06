@@ -138,12 +138,12 @@ export const useOrders = () => {
     fetchOrders();
   }, [fetchOrders]);
 
-  // Set up polling fallback - check for new orders every 5 seconds
+  // Set up polling fallback - check for new orders every 5 minutes instead of 5 seconds to save egress
   useEffect(() => {
     const pollInterval = setInterval(() => {
-      console.log('🔄 Polling for new orders...');
+      console.log('🔄 Fallback polling for new orders (5m)...');
       fetchOrdersRef.current(false);
-    }, 5000); // Check every 5 seconds
+    }, 300000); // Check every 5 minutes (300000ms)
 
     return () => {
       clearInterval(pollInterval);

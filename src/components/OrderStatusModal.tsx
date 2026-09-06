@@ -68,13 +68,13 @@ const OrderStatusModal: React.FC<OrderStatusModalProps> = ({ orderId, isOpen, on
       isInitialLoad.current = true;
       shouldContinuePolling.current = true;
       loadOrder(true);
-      // Poll for order updates every 3 seconds, but stop if order is in final state
+      // Poll for order updates every 30 seconds to reduce egress, but stop if order is in final state
       const interval = setInterval(() => {
         // Only continue polling if we should (order is still pending or processing)
         if (shouldContinuePolling.current) {
           loadOrder(false);
         }
-      }, 3000);
+      }, 30000);
       return () => clearInterval(interval);
     } else {
       // Only reset when modal closes AND order is not approved or rejected
