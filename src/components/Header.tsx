@@ -10,6 +10,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClick }) => {
   const { siteSettings } = useSiteSettings();
+  const logoUrl = siteSettings?.site_logo || '/logo.png';
+  const siteName = siteSettings?.site_name || 'APEX Game Credits';
 
   return (
     <header className="sticky top-0 z-50 shadow-sm" style={{ 
@@ -26,15 +28,15 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
             className="text-white hover:opacity-80 transition-colors duration-200 flex items-center gap-3"
           >
             <img 
-              src="/logo.png" 
-              alt="APEX Game Credits Logo"
+              src={logoUrl} 
+              alt={`${siteName} Logo`}
               className="h-10 sm:h-12 md:h-16 w-auto object-contain"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
             />
             <span className="text-base sm:text-lg md:text-xl font-bold text-white whitespace-nowrap">
-              APEX Game Credits
+              {siteName}
             </span>
           </button>
 

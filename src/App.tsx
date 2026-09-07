@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useCart } from './hooks/useCart';
+import { useSiteSettings } from './hooks/useSiteSettings';
 import Header from './components/Header';
 import SubNav from './components/SubNav';
 import Menu from './components/Menu';
@@ -14,6 +15,7 @@ import { useMenu } from './hooks/useMenu';
 function MainApp() {
   const cart = useCart();
   const { menuItems } = useMenu();
+  const { siteSettings } = useSiteSettings();
   const [currentView, setCurrentView] = React.useState<'menu' | 'cart' | 'checkout'>('menu');
   const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
   const [searchQuery, setSearchQuery] = React.useState<string>('');
@@ -82,7 +84,7 @@ function MainApp() {
       <div 
         className="fixed inset-0 flex items-center justify-center pointer-events-none z-0"
         style={{
-          backgroundImage: 'url(/logo.png)',
+          backgroundImage: `url(${siteSettings?.site_logo || '/logo.png'})`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
